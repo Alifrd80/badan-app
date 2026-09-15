@@ -1,0 +1,419 @@
+{
+ "version": 1,
+ "items": [
+  {
+   "id": "pushup-standard",
+   "fa": "شنا سوئدی معمولی",
+   "videoId": "1c0VFHwlWPXPFqYOFFqM3XHuP0uQKdqsy",
+   "order": 1
+  },
+  {
+   "id": "pushup-knees",
+   "fa": "شنا روی زانو",
+   "videoId": "177GnKBm2YRJMZ7lJtwV1cxrFU2CyWQC_",
+   "order": 2
+  },
+  {
+   "id": "pushup-wide",
+   "fa": "شنای دست باز",
+   "videoId": "13XlMsA-TZFzIeTozK45mdtXmO4AG-vOD",
+   "order": 3
+  },
+  {
+   "id": "pushup-diamond",
+   "fa": "شنای الماسی",
+   "videoId": "1QvhRTGYd-FmSdyIxDyQD9qEgyzyF5Z8w",
+   "order": 4
+  },
+  {
+   "id": "pushup-shoulder",
+   "fa": "شنا سرشانه",
+   "videoId": "1hDdU3ry62sUnDLhtfAopIo9WwfN4POFG",
+   "order": 5
+  },
+  {
+   "id": "pushup-incline",
+   "fa": "شنا شیب مثبت",
+   "videoId": "1WxzbEcjGe5qd-RcE-7_tR3p_46rxhd_k",
+   "order": 6
+  },
+  {
+   "id": "pushup-decline",
+   "fa": "شنا شیب منفی",
+   "videoId": "1Yk6YC7cw5WLgWTBZWo3kGR_HypRcbr9k",
+   "order": 7
+  },
+  {
+   "id": "pushup-negative",
+   "fa": "شنای منفی",
+   "videoId": "1hXTMkkYT9VwwbZk4trY1RaGpC-BeO1Qx",
+   "order": 8
+  },
+  {
+   "id": "pushup-slow",
+   "fa": "شنای اسلوموشن",
+   "videoId": "1aSV8lglNRdrne-ofEzY8Qdllr7GjVgj9",
+   "order": 9
+  },
+  {
+   "id": "pushup-tricep",
+   "fa": "شنای پشت بازو",
+   "videoId": "1Jfk5QsPPlp4f-xbPvP5UzFMVDrVyJ8m8",
+   "order": 10
+  },
+  {
+   "id": "pushup-tricep-knees",
+   "fa": "شنای پشت بازو زانو روی زمین",
+   "videoId": "1yZKJqES23I-3EawxnFdyR5GREsxeMJ27",
+   "order": 11
+  },
+  {
+   "id": "pushup-tricep-slow",
+   "fa": "شنای پشت بازو اسلوموشن",
+   "videoId": "1yZKJqES23I-3EawxnFdyR5GREsxeMJ27",
+   "order": 12
+  },
+  {
+   "id": "pushup-weighted",
+   "fa": "شنا با وزنه",
+   "videoId": "1eG7iNb_Xt_dA6kNXcjqThyUIvA9Kozx9",
+   "order": 13
+  },
+  {
+   "id": "pushup-shoulder-hold-top",
+   "fa": "شنا سرشانه نگه داشتن بالا",
+   "videoId": "1vJ5GqNx5F6S1_6kbCwA64l2cV-rX0n-R",
+   "order": 14
+  },
+  {
+   "id": "pike-balance",
+   "fa": "بالانس پاها تکیه به دیوار",
+   "videoId": "1PLxC7ZFSu_So18McTamTx0JASkt3HzWD",
+   "order": 15
+  },
+  {
+   "id": "pushup-archer",
+   "fa": "شنای ارچر",
+   "videoId": "1nXu3PKWP43VlwyFy-u_bshxuxMOHok8f",
+   "order": 16
+  },
+  {
+   "id": "pushup-negative-jump",
+   "fa": "شنای منفی + پرشی",
+   "videoId": "13teYY2-ASiHPxrhVxvnaZ-0OHluHG_7Q",
+   "order": 17
+  },
+  {
+   "id": "pushup-shoulder-touch",
+   "fa": "شنا سرشانه + لمس شانه",
+   "videoId": "18xiqLwh7Y7T4zxlfg4il_jRiMITk9SVx",
+   "order": 18
+  },
+  {
+   "id": "dip-chair",
+   "fa": "دیپ با صندلی",
+   "videoId": "1TlBo38e2GqEvXs66HXkapw7ECG33Pb6z",
+   "order": 19
+  },
+  {
+   "id": "dip",
+   "fa": "دیپ معمولی",
+   "videoId": "16SW4FI5nzFCgHQOQ3mHaynIuKwhOlNyi",
+   "order": 20
+  },
+  {
+   "id": "pushup-standard-close",
+   "fa": "شنا معمولی + شنا دست جمع",
+   "videoId": "1sC_Y4mQkLrdAICJgStIQiL5diPfJybHz",
+   "order": 21
+  },
+  {
+   "id": "pushup-diamond-decline",
+   "fa": "شنای الماسی شیب منفی",
+   "videoId": "13Drstj4pNz_5Vp2hrAkfWFcLPSaYzqLe",
+   "order": 22
+  },
+  {
+   "id": "pull-up",
+   "fa": "پول اپ",
+   "videoId": "1vnL9KnHCSXu9xa6dYYEFJ6eoOPemOt7g",
+   "order": 23
+  },
+  {
+   "id": "chin-up",
+   "fa": "چین اپ",
+   "videoId": "14N-m3TdmtAE_aCOJQjY3yPKD5mvdZuRb",
+   "order": 24
+  },
+  {
+   "id": "pull-up-negative",
+   "fa": "پول اپ منفی",
+   "videoId": "13HdoyZIxmeVWOhuafoK9UCW1hYAGCaag",
+   "order": 25
+  },
+  {
+   "id": "chin-up-negative",
+   "fa": "چین اپ منفی",
+   "videoId": "18QBgM4dH1Lomw11zwKZjzTx6viaplrJ5",
+   "order": 26
+  },
+  {
+   "id": "bar-shrug",
+   "fa": "شراگ با میله بارفیکس",
+   "videoId": "1uFRY_4vZzcQAgBDrfJTHDTisfimcaCdy",
+   "order": 27
+  },
+  {
+   "id": "bar-hang",
+   "fa": "آویزان ماندن از میله بارفیکس",
+   "videoId": "1nJn_6KrTsrMUdvKpSjbTB1PIGAdAksMU",
+   "order": 28
+  },
+  {
+   "id": "pull-up-hold-top",
+   "fa": "پول اپ نگه داشتن بالا",
+   "videoId": "1x-W1qMaDJIp6eb-DRbJathYr0Dj4Z-7L",
+   "order": 29
+  },
+  {
+   "id": "pull-up-close",
+   "fa": "پول اپ دست جمع",
+   "videoId": "1JgA5UrOjpfFFMCSYsaSI6MrM4OdSjmqS",
+   "order": 30
+  },
+  {
+   "id": "chin-up-close",
+   "fa": "چین اپ دست جمع",
+   "videoId": "1MP9WkbyltOoH7PdBJDydzPmVSDVkBHvN",
+   "order": 31
+  },
+  {
+   "id": "pull-up-wide",
+   "fa": "پول اپ دست باز",
+   "videoId": "1yDOQQ9jrzT5eSBC8trln9Ek0vspt5ySC",
+   "order": 32
+  },
+  {
+   "id": "pull-up-commando",
+   "fa": "پول اپ کاماندو",
+   "videoId": "178ithEgCcohOpYnK5rSx_0iUeaim0tAJ",
+   "order": 33
+  },
+  {
+   "id": "pull-up-pause",
+   "fa": "پول اپ + دو ثانیه مکث در بالا",
+   "videoId": "1U0EkJIMw5pc0YWCatTk7AJQxyGZM-uRR",
+   "order": 34
+  },
+  {
+   "id": "crunch",
+   "fa": "کرانچ",
+   "videoId": "1WjEtdjR9mxBM-k84MIn4Y-2ISRL7CvPh",
+   "order": 35
+  },
+  {
+   "id": "flutter-kick",
+   "fa": "فلاتر کیک",
+   "videoId": "1AuJotdkp5_yL2TadpGEDEKlyY3rYPtnT",
+   "order": 36
+  },
+  {
+   "id": "lying-leg-hold",
+   "fa": "نگه داشتن پا با فاصله پانزده سانتیمتر از زمین",
+   "videoId": "1Dv_FamortzLtIUXLIwYXbuPf3nhyGp-v",
+   "order": 37
+  },
+  {
+   "id": "bicycle-crunch",
+   "fa": "کرانچ دوچرخه",
+   "videoId": "184C76OfQgm3vD42tIiNVJn1oFbJ-A7F8",
+   "order": 38
+  },
+  {
+   "id": "oblique-crunch",
+   "fa": "کرانچ مورب",
+   "videoId": "1bGK1hirrbzs94oC1Ius8DOQ7d5y3ukyX",
+   "order": 39
+  },
+  {
+   "id": "reverse-crunch",
+   "fa": "کرانچ معکوس",
+   "videoId": "1Rh9jPTaHUZlBnGuVCYhl7LU8dOZTuybP",
+   "order": 40
+  },
+  {
+   "id": "leg-raises",
+   "fa": "بلند کردن پاها",
+   "videoId": "1BcT702rm6Dpl_JV4gf27jtSu8Q5DKVdj",
+   "order": 41
+  },
+  {
+   "id": "knee-tuck",
+   "fa": "زیر شکم جمع کردن زانو",
+   "videoId": "10g-8SwQuSCL4rYrMi5twO38EtIOqW-3s",
+   "order": 42
+  },
+  {
+   "id": "russian-twist",
+   "fa": "چرخش روسی",
+   "videoId": "1zUYBjiiD0G4Mke-gFx596YJrbmtXmFLN",
+   "order": 43
+  },
+  {
+   "id": "side-plank",
+   "fa": "پلانک جانبی",
+   "videoId": "15ASglsRZNuJwKUVzdGQMGTP8znCrBlun",
+   "order": 44
+  },
+  {
+   "id": "mountain-climber",
+   "fa": "حرکت کوهنوردی",
+   "videoId": "1ZGP8GvhvbtY8rBeqSJ5arpvE96bVmsuB",
+   "order": 45
+  },
+  {
+   "id": "v-up-crunch",
+   "fa": "کرانچ وی اپ",
+   "videoId": "1D0vcZ096QlklEEqgv8547_26DzBCYnOZ",
+   "order": 46
+  },
+  {
+   "id": "plank",
+   "fa": "پلانک",
+   "videoId": "1lfOnWnxkZBzXqmJ2pdUta8x9ZEdLTC2K",
+   "order": 47
+  },
+  {
+   "id": "squat",
+   "fa": "اسکات",
+   "videoId": "1d8h4G1IIT1urB1ctS-HVw7Ryobey14VA",
+   "order": 48
+  },
+  {
+   "id": "jump-squat",
+   "fa": "اسکات پرشی",
+   "videoId": "1vlquKxnZ3U63hnB8AittXST2MjUVVKqQ",
+   "order": 49
+  },
+  {
+   "id": "lunge",
+   "fa": "لانگ",
+   "videoId": "1diuGbau9mmcwgCqa-RLfQ9pKr0TSdVdV",
+   "order": 50
+  },
+  {
+   "id": "jump-lunge",
+   "fa": "لانگ پرشی",
+   "videoId": "1ij6oU6H8tyqwBBUMIvxIyBl6l2Y35CnY",
+   "order": 51
+  },
+  {
+   "id": "bulgarian-squat",
+   "fa": "اسکات بلغاری",
+   "videoId": "1j2WRvMpflYo5-tAf-KtBA074c1DoTibK",
+   "order": 52
+  },
+  {
+   "id": "wall-sit",
+   "fa": "حرکت صندلی تکیه به دیوار",
+   "videoId": "1Ai_LrdHz4tn6XqUEV6DSU4jso60Zk6eJ",
+   "order": 53
+  },
+  {
+   "id": "pistol-squat",
+   "fa": "اسکات پیستول",
+   "videoId": "1qZtOaP7wGq4f5WLMmoShGEKnRClV7U3m",
+   "order": 54
+  },
+  {
+   "id": "squat-slow",
+   "fa": "اسکات اسلوموشن",
+   "videoId": "1juJAtbC6-uemaP7STU7_pgo577xudvOR",
+   "order": 55
+  },
+  {
+   "id": "squat-from-knees",
+   "fa": "اسکات با پرش از زانو",
+   "videoId": "1Zk2vi94f3H-fRZn1ORF3fNOCNtKTexTN",
+   "order": 56
+  },
+  {
+   "id": "step-up",
+   "fa": "استپ اپ",
+   "videoId": "1fMHkEV9WNB0hTfNGpVFWoRq8PYDkKdNj",
+   "order": 57
+  },
+  {
+   "id": "jump-lunge-jump-squat",
+   "fa": "لانگ پرشی + اسکات پرشی",
+   "videoId": "1_UhDx0iQ8Rfgld3iNkBKfF5C9Jyo8qzi",
+   "order": 58
+  },
+  {
+   "id": "inverted-row",
+   "fa": "اینورتد رو",
+   "videoId": "1vSsiI4tKHdDWyrDihqd55Y1RSGowaCa7",
+   "order": 59
+  },
+  {
+   "id": "inverted-row-pause",
+   "fa": "اینورتد رو + دو ثانیه مکث",
+   "videoId": "1VnB7JcReEG6AxqLkXCvOT-5lcR05ZoeY",
+   "order": 60
+  },
+  {
+   "id": "supine-push-up",
+   "fa": "شنای کمر",
+   "videoId": "1iS_qu12K22yMyv_r3Y4GUDG7Bt7TIGV1",
+   "order": 61
+  },
+  {
+   "id": "supine-push-up-pause",
+   "fa": "شنای کمر + دو ثانیه مکث",
+   "videoId": "1ClSK45W0JvQ7JXsbrmKykNJsAVHg7acA",
+   "order": 62
+  },
+  {
+   "id": "superman",
+   "fa": "حرکت سوپرمن",
+   "videoId": "19ZvgPGDdQFRKZv7RG-KgDDSQw1esENP1",
+   "order": 63
+  },
+  {
+   "id": "superman-pause",
+   "fa": "حرکت سوپرمن + دو ثانیه مکث",
+   "videoId": "1788ZTUuPert6xVrr6F0SSL4nBotDgkNC",
+   "order": 64
+  },
+  {
+   "id": "inverted-row-reverse",
+   "fa": "اینورتد رو با دست برعکس",
+   "videoId": "1DF0A8IJSoZb01txIlA-qJM-zQgaAkaoA",
+   "order": 65
+  },
+  {
+   "id": "inverted-row-reverse-pause",
+   "fa": "اینورتد رو با دست برعکس + دو ثانیه مکث",
+   "videoId": "13Gv1Rv2ocAEnjDkhLRB54xl8-qXmkcT4",
+   "order": 66
+  },
+  {
+   "id": "bicep-curl-bag",
+   "fa": "جلو بازو با کیف",
+   "videoId": "1py2_IFdw2BHun0A-t_V8XvZKp9TqYxSu",
+   "order": 67
+  },
+  {
+   "id": "hammer-curl-bag",
+   "fa": "جلو بازو چکشی با کیف",
+   "videoId": "1gN0D154q_lHJeHYiZqBG3V-LZscAI6nK",
+   "order": 68
+  },
+  {
+   "id": "bent-over-row-bag",
+   "fa": "زیربغل خم با کیف",
+   "videoId": "1yhCAmLJXRGfiZkIYn5CUzfNi96ndcVrY",
+   "order": 69
+  }
+ ]
+}

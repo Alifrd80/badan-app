@@ -1,0 +1,562 @@
+{
+ "version": 1,
+ "intro": "اگر میله بارفیکس ندارید از این برنامه استفاده کنید؛ محتوای کیف (کتاب و بطری آب) باید روز به روز سنگین‌تر شود.",
+ "weeks": [
+  {
+   "index": 1,
+   "note": null,
+   "exercises": [
+    {
+     "id": "inverted-row",
+     "sets": 4,
+     "reps": 8,
+     "repsDisplay": "4x8"
+    },
+    {
+     "id": "supine-push-up",
+     "sets": 3,
+     "reps": 10,
+     "repsDisplay": "3x10"
+    },
+    {
+     "id": "superman",
+     "sets": 3,
+     "reps": 12,
+     "repsDisplay": "3x12"
+    },
+    {
+     "id": "inverted-row-reverse",
+     "sets": 4,
+     "reps": 8,
+     "repsDisplay": "4x8"
+    },
+    {
+     "id": "bicep-curl-bag",
+     "sets": 3,
+     "reps": 10,
+     "repsDisplay": "3x10"
+    },
+    {
+     "id": "hammer-curl-bag",
+     "sets": 3,
+     "reps": 10,
+     "repsDisplay": "3x10"
+    }
+   ]
+  },
+  {
+   "index": 2,
+   "note": null,
+   "exercises": [
+    {
+     "id": "inverted-row",
+     "sets": 4,
+     "reps": 8,
+     "repsDisplay": "4x8"
+    },
+    {
+     "id": "supine-push-up",
+     "sets": 3,
+     "reps": 10,
+     "repsDisplay": "3x10"
+    },
+    {
+     "id": "superman",
+     "sets": 3,
+     "reps": 12,
+     "repsDisplay": "3x12"
+    },
+    {
+     "id": "inverted-row-reverse",
+     "sets": 4,
+     "reps": 8,
+     "repsDisplay": "4x8"
+    },
+    {
+     "id": "bicep-curl-bag",
+     "sets": 3,
+     "reps": 10,
+     "repsDisplay": "3x10"
+    },
+    {
+     "id": "hammer-curl-bag",
+     "sets": 3,
+     "reps": 10,
+     "repsDisplay": "3x10"
+    }
+   ]
+  },
+  {
+   "index": 3,
+   "note": null,
+   "exercises": [
+    {
+     "id": "inverted-row",
+     "sets": 4,
+     "reps": 10,
+     "repsDisplay": "4x10"
+    },
+    {
+     "id": "supine-push-up",
+     "sets": 4,
+     "reps": 10,
+     "repsDisplay": "4x10"
+    },
+    {
+     "id": "superman",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12"
+    },
+    {
+     "id": "inverted-row-reverse",
+     "sets": 4,
+     "reps": 10,
+     "repsDisplay": "4x10"
+    },
+    {
+     "id": "bicep-curl-bag",
+     "sets": 4,
+     "reps": 10,
+     "repsDisplay": "4x10"
+    },
+    {
+     "id": "hammer-curl-bag",
+     "sets": 4,
+     "reps": 10,
+     "repsDisplay": "4x10"
+    }
+   ]
+  },
+  {
+   "index": 4,
+   "note": null,
+   "exercises": [
+    {
+     "id": "inverted-row",
+     "sets": 4,
+     "reps": 10,
+     "repsDisplay": "4x10"
+    },
+    {
+     "id": "supine-push-up",
+     "sets": 4,
+     "reps": 10,
+     "repsDisplay": "4x10"
+    },
+    {
+     "id": "superman",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12"
+    },
+    {
+     "id": "inverted-row-reverse",
+     "sets": 4,
+     "reps": 10,
+     "repsDisplay": "4x10"
+    },
+    {
+     "id": "bicep-curl-bag",
+     "sets": 4,
+     "reps": 10,
+     "repsDisplay": "4x10"
+    },
+    {
+     "id": "hammer-curl-bag",
+     "sets": 4,
+     "reps": 10,
+     "repsDisplay": "4x10"
+    }
+   ]
+  },
+  {
+   "index": 5,
+   "note": "محتوای کیف را کمی سنگین‌تر کنید",
+   "exercises": [
+    {
+     "id": "inverted-row",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12"
+    },
+    {
+     "id": "supine-push-up",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12"
+    },
+    {
+     "id": "superman",
+     "sets": 4,
+     "reps": 15,
+     "repsDisplay": "4x15"
+    },
+    {
+     "id": "inverted-row-reverse",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12"
+    },
+    {
+     "id": "bicep-curl-bag",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12"
+    },
+    {
+     "id": "hammer-curl-bag",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12"
+    }
+   ]
+  },
+  {
+   "index": 6,
+   "note": "محتوای کیف را کمی سنگین‌تر کنید",
+   "exercises": [
+    {
+     "id": "inverted-row",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12"
+    },
+    {
+     "id": "supine-push-up",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12"
+    },
+    {
+     "id": "superman",
+     "sets": 4,
+     "reps": 15,
+     "repsDisplay": "4x15"
+    },
+    {
+     "id": "inverted-row-reverse",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12"
+    },
+    {
+     "id": "bicep-curl-bag",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12"
+    },
+    {
+     "id": "hammer-curl-bag",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12"
+    }
+   ]
+  },
+  {
+   "index": 7,
+   "note": "کیف را سنگین‌تر کنید",
+   "exercises": [
+    {
+     "id": "inverted-row",
+     "sets": 4,
+     "reps": 15,
+     "repsDisplay": "4x15"
+    },
+    {
+     "id": "supine-push-up",
+     "sets": 4,
+     "reps": 15,
+     "repsDisplay": "4x15"
+    },
+    {
+     "id": "superman",
+     "sets": 4,
+     "reps": 15,
+     "repsDisplay": "4x15"
+    },
+    {
+     "id": "inverted-row-reverse",
+     "sets": 4,
+     "reps": 15,
+     "repsDisplay": "4x15"
+    },
+    {
+     "id": "bicep-curl-bag",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12"
+    },
+    {
+     "id": "hammer-curl-bag",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12"
+    }
+   ]
+  },
+  {
+   "index": 8,
+   "note": "کیف را سنگین‌تر کنید",
+   "exercises": [
+    {
+     "id": "inverted-row",
+     "sets": 4,
+     "reps": 15,
+     "repsDisplay": "4x15"
+    },
+    {
+     "id": "supine-push-up",
+     "sets": 4,
+     "reps": 15,
+     "repsDisplay": "4x15"
+    },
+    {
+     "id": "superman",
+     "sets": 4,
+     "reps": 15,
+     "repsDisplay": "4x15"
+    },
+    {
+     "id": "inverted-row-reverse",
+     "sets": 4,
+     "reps": 15,
+     "repsDisplay": "4x15"
+    },
+    {
+     "id": "bicep-curl-bag",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12"
+    },
+    {
+     "id": "hammer-curl-bag",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12"
+    }
+   ]
+  },
+  {
+   "index": 9,
+   "note": "کیف را سنگین‌تر کنید؛ در حرکات اینورتد رو دودر ثانیه مکث در بالا",
+   "exercises": [
+    {
+     "id": "inverted-row",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12",
+     "holdTop": true
+    },
+    {
+     "id": "supine-push-up",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12"
+    },
+    {
+     "id": "superman",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12"
+    },
+    {
+     "id": "inverted-row-reverse",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12",
+     "holdTop": true
+    },
+    {
+     "id": "bicep-curl-bag",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12"
+    },
+    {
+     "id": "hammer-curl-bag",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12"
+    }
+   ]
+  },
+  {
+   "index": 10,
+   "note": "کیف را سنگین‌تر کنید؛ در حرکات اینورتد رو دودر ثانیه مکث در بالا",
+   "exercises": [
+    {
+     "id": "inverted-row",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12",
+     "holdTop": true
+    },
+    {
+     "id": "supine-push-up",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12"
+    },
+    {
+     "id": "superman",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12"
+    },
+    {
+     "id": "inverted-row-reverse",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12",
+     "holdTop": true
+    },
+    {
+     "id": "bicep-curl-bag",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12"
+    },
+    {
+     "id": "hammer-curl-bag",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12"
+    }
+   ]
+  },
+  {
+   "index": 11,
+   "note": "کیف را سنگین‌تر کنید؛ در حرکات اینورتد رو دودر ثانیه مکث در بالا",
+   "exercises": [
+    {
+     "id": "inverted-row",
+     "sets": 4,
+     "reps": 15,
+     "repsDisplay": "4x15",
+     "holdTop": true
+    },
+    {
+     "id": "supine-push-up",
+     "sets": 4,
+     "reps": 15,
+     "repsDisplay": "4x15"
+    },
+    {
+     "id": "superman",
+     "sets": 4,
+     "reps": 15,
+     "repsDisplay": "4x15"
+    },
+    {
+     "id": "inverted-row-reverse",
+     "sets": 4,
+     "reps": 15,
+     "repsDisplay": "4x15",
+     "holdTop": true
+    },
+    {
+     "id": "bicep-curl-bag",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12"
+    },
+    {
+     "id": "hammer-curl-bag",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12"
+    }
+   ]
+  },
+  {
+   "index": 12,
+   "note": "کیف را سنگین‌تر کنید؛ در حرکات اینورتد رو دودر ثانیه مکث در بالا",
+   "exercises": [
+    {
+     "id": "inverted-row",
+     "sets": 4,
+     "reps": 15,
+     "repsDisplay": "4x15",
+     "holdTop": true
+    },
+    {
+     "id": "supine-push-up",
+     "sets": 4,
+     "reps": 15,
+     "repsDisplay": "4x15"
+    },
+    {
+     "id": "superman",
+     "sets": 4,
+     "reps": 15,
+     "repsDisplay": "4x15"
+    },
+    {
+     "id": "inverted-row-reverse",
+     "sets": 4,
+     "reps": 15,
+     "repsDisplay": "4x15",
+     "holdTop": true
+    },
+    {
+     "id": "bicep-curl-bag",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12"
+    },
+    {
+     "id": "hammer-curl-bag",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12"
+    }
+   ]
+  },
+  {
+   "index": 13,
+   "note": "کیف را سنگین‌تر کنید؛ در حرکات اینورتد رو دودر ثانیه مکث در بالا",
+   "exercises": [
+    {
+     "id": "inverted-row",
+     "sets": 4,
+     "reps": 15,
+     "repsDisplay": "4x15",
+     "holdTop": true
+    },
+    {
+     "id": "supine-push-up",
+     "sets": 4,
+     "reps": 15,
+     "repsDisplay": "4x15"
+    },
+    {
+     "id": "superman",
+     "sets": 4,
+     "reps": 15,
+     "repsDisplay": "4x15"
+    },
+    {
+     "id": "inverted-row-reverse",
+     "sets": 4,
+     "reps": 15,
+     "repsDisplay": "4x15",
+     "holdTop": true
+    },
+    {
+     "id": "bicep-curl-bag",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12"
+    },
+    {
+     "id": "hammer-curl-bag",
+     "sets": 4,
+     "reps": 12,
+     "repsDisplay": "4x12"
+    }
+   ]
+  }
+ ]
+}

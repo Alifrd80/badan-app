@@ -1,0 +1,364 @@
+{
+ "version": 1,
+ "categories": {
+  "push": "سینه و سرشانه",
+  "pull": "پشت و زیر بغل",
+  "legs": "پا",
+  "abs": "شکم",
+  "pullNoBar": "پول بدون میله",
+  "back": "کمر و پشت"
+ },
+ "hasVideo": true,
+ "items": [
+  {
+   "id": "pushup-standard",
+   "fa": "شنا سوئدی معمولی",
+   "cat": "push"
+  },
+  {
+   "id": "pushup-knees",
+   "fa": "شنا روی زانو",
+   "cat": "push"
+  },
+  {
+   "id": "pushup-wide",
+   "fa": "شنای دست باز",
+   "cat": "push"
+  },
+  {
+   "id": "pushup-diamond",
+   "fa": "شنای الماسی",
+   "cat": "push"
+  },
+  {
+   "id": "pushup-shoulder",
+   "fa": "شنا سرشانه",
+   "cat": "push"
+  },
+  {
+   "id": "pushup-incline",
+   "fa": "شنا شیب مثبت",
+   "cat": "push"
+  },
+  {
+   "id": "pushup-decline",
+   "fa": "شنا شیب منفی",
+   "cat": "push"
+  },
+  {
+   "id": "pushup-negative",
+   "fa": "شنای منفی",
+   "cat": "push"
+  },
+  {
+   "id": "pushup-slow",
+   "fa": "شنای اسلوموشن",
+   "cat": "push"
+  },
+  {
+   "id": "pushup-tricep",
+   "fa": "شنای پشت بازو",
+   "cat": "push"
+  },
+  {
+   "id": "pushup-tricep-knees",
+   "fa": "شنای پشت بازو زانو روی زمین",
+   "cat": "push"
+  },
+  {
+   "id": "pushup-tricep-slow",
+   "fa": "شنای پشت بازو اسلوموشن",
+   "cat": "push"
+  },
+  {
+   "id": "pushup-weighted",
+   "fa": "شنا با وزنه",
+   "cat": "push"
+  },
+  {
+   "id": "pushup-shoulder-hold-top",
+   "fa": "شنا سرشانه نگه داشتن بالا",
+   "cat": "push"
+  },
+  {
+   "id": "pike-balance",
+   "fa": "بالانس پاها تکیه به دیوار",
+   "cat": "push"
+  },
+  {
+   "id": "pushup-archer",
+   "fa": "شنای ارچر",
+   "cat": "push"
+  },
+  {
+   "id": "pushup-negative-jump",
+   "fa": "شنای منفی + پرشی",
+   "cat": "push"
+  },
+  {
+   "id": "pushup-shoulder-touch",
+   "fa": "شنا سرشانه + لمس شانه",
+   "cat": "push"
+  },
+  {
+   "id": "dip-chair",
+   "fa": "دیپ با صندلی",
+   "cat": "push"
+  },
+  {
+   "id": "dip",
+   "fa": "دیپ معمولی",
+   "cat": "push"
+  },
+  {
+   "id": "pushup-standard-close",
+   "fa": "شنا معمولی + شنا دست جمع",
+   "cat": "push"
+  },
+  {
+   "id": "pushup-diamond-decline",
+   "fa": "شنای الماسی شیب منفی",
+   "cat": "push"
+  },
+  {
+   "id": "pull-up",
+   "fa": "پول اپ",
+   "cat": "pull"
+  },
+  {
+   "id": "chin-up",
+   "fa": "چین اپ",
+   "cat": "pull"
+  },
+  {
+   "id": "pull-up-negative",
+   "fa": "پول اپ منفی",
+   "cat": "pull"
+  },
+  {
+   "id": "chin-up-negative",
+   "fa": "چین اپ منفی",
+   "cat": "pull"
+  },
+  {
+   "id": "bar-shrug",
+   "fa": "شراگ با میله بارفیکس",
+   "cat": "pull"
+  },
+  {
+   "id": "bar-hang",
+   "fa": "آویزان ماندن از میله بارفیکس",
+   "cat": "pull"
+  },
+  {
+   "id": "pull-up-hold-top",
+   "fa": "پول اپ نگه داشتن بالا",
+   "cat": "pull"
+  },
+  {
+   "id": "pull-up-close",
+   "fa": "پول اپ دست جمع",
+   "cat": "pull"
+  },
+  {
+   "id": "chin-up-close",
+   "fa": "چین اپ دست جمع",
+   "cat": "pull"
+  },
+  {
+   "id": "pull-up-wide",
+   "fa": "پول اپ دست باز",
+   "cat": "pull"
+  },
+  {
+   "id": "pull-up-commando",
+   "fa": "پول اپ کاماندو",
+   "cat": "pull"
+  },
+  {
+   "id": "pull-up-pause",
+   "fa": "پول اپ + دو ثانیه مکث در بالا",
+   "cat": "pull"
+  },
+  {
+   "id": "crunch",
+   "fa": "کرانچ",
+   "cat": "abs"
+  },
+  {
+   "id": "flutter-kick",
+   "fa": "فلاتر کیک",
+   "cat": "abs"
+  },
+  {
+   "id": "lying-leg-hold",
+   "fa": "نگه داشتن پا با فاصله پانزده سانتیمتر از زمین",
+   "cat": "abs"
+  },
+  {
+   "id": "bicycle-crunch",
+   "fa": "کرانچ دوچرخه",
+   "cat": "abs"
+  },
+  {
+   "id": "oblique-crunch",
+   "fa": "کرانچ مورب",
+   "cat": "abs"
+  },
+  {
+   "id": "reverse-crunch",
+   "fa": "کرانچ معکوس",
+   "cat": "abs"
+  },
+  {
+   "id": "leg-raises",
+   "fa": "بلند کردن پاها",
+   "cat": "abs"
+  },
+  {
+   "id": "knee-tuck",
+   "fa": "زیر شکم جمع کردن زانو",
+   "cat": "abs"
+  },
+  {
+   "id": "russian-twist",
+   "fa": "چرخش روسی",
+   "cat": "abs"
+  },
+  {
+   "id": "side-plank",
+   "fa": "پلانک جانبی",
+   "cat": "abs"
+  },
+  {
+   "id": "mountain-climber",
+   "fa": "حرکت کوهنوردی",
+   "cat": "abs"
+  },
+  {
+   "id": "v-up-crunch",
+   "fa": "کرانچ وی اپ",
+   "cat": "abs"
+  },
+  {
+   "id": "plank",
+   "fa": "پلانک",
+   "cat": "abs"
+  },
+  {
+   "id": "squat",
+   "fa": "اسکات",
+   "cat": "legs"
+  },
+  {
+   "id": "jump-squat",
+   "fa": "اسکات پرشی",
+   "cat": "legs"
+  },
+  {
+   "id": "lunge",
+   "fa": "لانگ",
+   "cat": "legs"
+  },
+  {
+   "id": "jump-lunge",
+   "fa": "لانگ پرشی",
+   "cat": "legs"
+  },
+  {
+   "id": "bulgarian-squat",
+   "fa": "اسکات بلغاری",
+   "cat": "legs"
+  },
+  {
+   "id": "wall-sit",
+   "fa": "حرکت صندلی تکیه به دیوار",
+   "cat": "legs"
+  },
+  {
+   "id": "pistol-squat",
+   "fa": "اسکات پیستول",
+   "cat": "legs"
+  },
+  {
+   "id": "squat-slow",
+   "fa": "اسکات اسلوموشن",
+   "cat": "legs"
+  },
+  {
+   "id": "squat-from-knees",
+   "fa": "اسکات با پرش از زانو",
+   "cat": "legs"
+  },
+  {
+   "id": "step-up",
+   "fa": "استپ اپ",
+   "cat": "legs"
+  },
+  {
+   "id": "jump-lunge-jump-squat",
+   "fa": "لانگ پرشی + اسکات پرشی",
+   "cat": "legs"
+  },
+  {
+   "id": "inverted-row",
+   "fa": "اینورتد رو",
+   "cat": "pullNoBar"
+  },
+  {
+   "id": "inverted-row-pause",
+   "fa": "اینورتد رو + دو ثانیه مکث",
+   "cat": "pullNoBar"
+  },
+  {
+   "id": "supine-push-up",
+   "fa": "شنای کمر",
+   "cat": "back"
+  },
+  {
+   "id": "supine-push-up-pause",
+   "fa": "شنای کمر + دو ثانیه مکث",
+   "cat": "back"
+  },
+  {
+   "id": "superman",
+   "fa": "حرکت سوپرمن",
+   "cat": "back"
+  },
+  {
+   "id": "superman-pause",
+   "fa": "حرکت سوپرمن + دو ثانیه مکث",
+   "cat": "back"
+  },
+  {
+   "id": "inverted-row-reverse",
+   "fa": "اینورتد رو با دست برعکس",
+   "cat": "pullNoBar"
+  },
+  {
+   "id": "inverted-row-reverse-pause",
+   "fa": "اینورتد رو با دست برعکس + دو ثانیه مکث",
+   "cat": "pullNoBar"
+  },
+  {
+   "id": "bicep-curl-bag",
+   "fa": "جلو بازو با کیف",
+   "cat": "pullNoBar"
+  },
+  {
+   "id": "hammer-curl-bag",
+   "fa": "جلو بازو چکشی با کیف",
+   "cat": "pullNoBar"
+  },
+  {
+   "id": "bent-over-row-bag",
+   "fa": "زیربغل خم با کیف",
+   "cat": "pullNoBar"
+  },
+  {
+   "id": "door-towel-row",
+   "fa": "پارویی با حوله از درب (door towel row)",
+   "cat": "pullNoBar"
+  }
+ ]
+}

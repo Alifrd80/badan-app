@@ -1,0 +1,151 @@
+{
+ "version": 1,
+ "bmr": {
+  "method": "Mifflin-St Jeor",
+  "male": "10×وزن(kg) + 6.25×قد(cm) − 5×سن(سال) + 5",
+  "female": "10×وزن(kg) + 6.25×قد(cm) − 5×سن(سال) − 161",
+  "exampleMale": {
+   "weightKg": 80,
+   "heightCm": 180,
+   "age": 30,
+   "bmr": 1767
+  },
+  "exampleExtra": 1050,
+  "exampleTotal": 2817,
+  "exampleRounded": 2800,
+  "stairsPerHour": 1100,
+  "stairs10Min": 183
+ },
+ "macroCaloriesPerGram": {
+  "carbs": 4,
+  "protein": 4,
+  "fat": 9
+ },
+ "splits": [
+  {
+   "key": "normal",
+   "fa": "فرد عادی (که ورزش نمی‌کند)",
+   "calories": 2800,
+   "carbsPct": 45,
+   "proteinPct": 15,
+   "fatPct": 40,
+   "carbsCal": 1260,
+   "proteinCal": 420,
+   "fatCal": 1120
+  },
+  {
+   "key": "athlete",
+   "fa": "فرد ورزشکار",
+   "calories": 2800,
+   "carbsPct": 45,
+   "proteinPct": 20,
+   "fatPct": 35,
+   "carbsCal": 1260,
+   "proteinCal": 560,
+   "fatCal": 980
+  },
+  {
+   "key": "weightLoss",
+   "fa": "کاهش وزن",
+   "calories": 2300,
+   "carbsPct": 40,
+   "proteinPct": 20,
+   "fatPct": 40,
+   "carbsCal": 920,
+   "proteinCal": 460,
+   "fatCal": 920
+  },
+  {
+   "key": "weightGain",
+   "fa": "افزایش حجم و وزن",
+   "calories": 3300,
+   "carbsPct": 40,
+   "proteinPct": 25,
+   "fatPct": 35,
+   "carbsCal": 1320,
+   "proteinCal": 825,
+   "fatCal": 1155
+  },
+  {
+   "key": "veryThin",
+   "fa": "افراد خیلی لاغر",
+   "calories": null,
+   "carbsPct": 55,
+   "proteinPct": 15,
+   "fatPct": 30,
+   "carbsCal": null,
+   "proteinCal": null,
+   "fatCal": null,
+   "note": "کالری روزانه را حساب کنید و بر اساس این درصدها تقسیم کنید؛ برای عضله تمیز پروتئین را تا ۳۰٪ بالا ببرید و از کربو کم کنید."
+  }
+ ],
+ "exampleDivision2300": {
+  "carbsCal": 920,
+  "carbsGram": 230,
+  "proteinCal": 460,
+  "proteinGram": 115,
+  "fatCal": 920,
+  "fatGram": 102,
+  "meals": 5,
+  "kcalPerMeal": 460,
+  "note": "فاصله بین وعده‌ها حداقل دو تا سه ساعت. هر قاشق غذاخوری عسل حدود بیست گرم چربی دارد."
+ },
+ "exampleMealPlan2600": [
+  {
+   "meal": "صبحانه",
+   "desc": "۴-۵ تخم‌مرغ (۲ کامل و ۲-۳ سفیده) + ۲ کف دست نان یا یک قاشق عسل",
+   "kcal": 540,
+   "protein": 82,
+   "fat": 34,
+   "carbs": 30
+  },
+  {
+   "meal": "میان‌وعده",
+   "desc": "یک آجیل یا یک عدد موز متوسط",
+   "kcal": 230,
+   "protein": 9,
+   "fat": 8,
+   "carbs": 30
+  },
+  {
+   "meal": "ناهار",
+   "desc": "یک سینه مرغ (۲۰۰ گرم) + ۲۰۰ گرم برنج + ۲۰۰ گرم سالاد",
+   "kcal": 843,
+   "protein": 45,
+   "fat": 18,
+   "carbs": 84
+  },
+  {
+   "meal": "قبل از تمرین",
+   "desc": "قهوه",
+   "kcal": null,
+   "protein": null,
+   "fat": null,
+   "carbs": null
+  },
+  {
+   "meal": "بعد از تمرین",
+   "desc": "۴ عدد سفیده تخم‌مرغ + ۲ عدد سیب‌زمینی بخارپز (۳۴۰ گرم) + یک کاسه سالاد سبزیجات",
+   "kcal": 402,
+   "protein": 23,
+   "fat": null,
+   "carbs": 74
+  },
+  {
+   "meal": "شام",
+   "desc": "۲۰۰ گرم ماهی یا ۲۰۰ گرم گوشت + بعد از غذا یک قاشق عسل",
+   "kcal": 355,
+   "protein": 44,
+   "fat": 10,
+   "carbs": 22
+  }
+ ],
+ "rules": [
+  "اگر درصد پروتئین را افزایش دادید، از کربوهیدرات و چربی به همان میزان کم کنید؛ درصد چربی بهتر است از ۳۰ کمتر نشود.",
+  "برای کاهش وزن مهم‌ترین عامل افزایش متابولیسم پروتئین است؛ پروتئین را اغلب به‌صورت جداگانه در هر وعده مصرف کنید.",
+  "همیشه در وعده قبل از تمرین پروتئین داشته باشید.",
+  "هر هفته وزن خود را اندازه بگیرید و کالری روزانه را بر اساس آن تنظیم کنید.",
+  "برای کاهش وزن کربوهیدرات را خیلی کم نکنید (کمبود آن باعث افت تمرین و افت قند خون می‌شود).",
+  "رژیم روزه‌داری ۱۶/۸: هشت ساعت پنجره غذا شامل سه تا چهار وعده؛ بهترین زمان تمرین، بعد از افطار یا یک ساعت قبل از افطار است."
+ ]
+}
