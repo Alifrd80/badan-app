@@ -28,12 +28,18 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        shell: bash
+        run: |
+          set -euxo pipefail
+          npm ci
 
       - name: Build static export
+        shell: bash
         env:
           NEXT_PUBLIC_BASE_PATH: /badan-app
-        run: npm run build
+        run: |
+          set -euxo pipefail
+          npm run build
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
