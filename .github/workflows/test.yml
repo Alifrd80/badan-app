@@ -1,0 +1,9 @@
+name: Test runner
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Echo
+        run: echo "runner works" && node --version && npm --version
