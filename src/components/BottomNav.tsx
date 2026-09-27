@@ -1,59 +1,9 @@
 "use client";
-
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-
-const items = [
-  { href: "/", label: "امروز", icon: "◈" },
-  { href: "/program", label: "برنامه", icon: "🗓" },
-  { href: "/abs", label: "شکم", icon: "▤" },
-  { href: "/nutrition", label: "تغذیه", icon: "🥗" },
-  { href: "/more", label: "بیشتر", icon: "⋯" },
-];
-
-export default function BottomNav() {
-  const pathname = usePathname();
-
-  const isActive = (href: string) => {
-    switch (href) {
-      case "/":
-        return pathname === "/";
-      case "/program":
-        return pathname === "/program" || pathname.startsWith("/day/");
-      case "/more":
-        return (
-          pathname === "/more" ||
-          pathname === "/exercises" ||
-          pathname === "/pull-no-bar" ||
-          pathname === "/calorie" ||
-          pathname === "/notes"
-        );
-      default:
-        return pathname === href;
-    }
-  };
-
-  return (
-    <nav className="sticky bottom-0 z-30 border-t border-zinc-200 bg-white/95 backdrop-blur dark:border-zinc-800 dark:bg-zinc-900/95">
-      <div className="mx-auto grid max-w-md grid-cols-5">
-        {items.map((it) => {
-          const active = isActive(it.href);
-          return (
-            <Link
-              key={it.href}
-              href={it.href}
-              className={`flex flex-col items-center gap-0.5 py-2 text-[11px] transition-colors ${
-                active
-                  ? "text-emerald-600 dark:text-emerald-400"
-                  : "text-zinc-500 dark:text-zinc-400"
-              }`}
-            >
-              <span className="text-lg leading-none">{it.icon}</span>
-              <span>{it.label}</span>
-            </Link>
-          );
-        })}
-      </div>
-    </nav>
-  );
+import {usePathname} from "next/navigation";
+import Icon from "./Icon";
+const items=[{href:"/",label:"امروز",icon:"home"},{href:"/program",label:"برنامهٔ تمرین",icon:"calendar"},{href:"/abs",label:"سرکیت شکم",icon:"workout"},{href:"/nutrition",label:"تغذیه",icon:"leaf"},{href:"/more",label:"بیشتر",icon:"more"}];
+export default function BottomNav(){
+ const path=usePathname();
+ return <nav className="app-nav" aria-label="ناوبری اصلی"><div className="nav-caption">مسیر تمرین تو</div><div className="nav-items">{items.map(it=>{const active=it.href==="/"?path==="/":it.href==="/program"?path==="/program"||path.startsWith("/day/"):it.href==="/more"?["/more","/exercises","/pull-no-bar","/calorie","/notes"].includes(path):path===it.href;return <Link key={it.href} href={it.href} className={`nav-link ${active?"active":""}`} aria-current={active?"page":undefined}><Icon name={it.icon}/><span>{it.label}</span></Link>})}</div><div className="nav-bottom"><span className="nav-number">۱۳</span><p>هفته تا نسخهٔ قوی‌تر تو</p><small>تمرین با وزن بدن · در خانه</small></div></nav>
 }

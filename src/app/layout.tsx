@@ -5,6 +5,8 @@ import "./globals.css";
 import BottomNav from "@/components/BottomNav";
 import SWRegister from "@/components/SWRegister";
 import basePath from "@/lib/basePath";
+import Link from "next/link";
+import Icon from "@/components/Icon";
 
 const vazir = Vazirmatn({
   subsets: ["arabic", "latin"],
@@ -25,7 +27,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#059669",
+  themeColor: "#c8f36a",
   colorScheme: "light",
   width: "device-width",
   initialScale: 1,
@@ -35,22 +37,11 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="fa" dir="rtl" className={`${vazir.variable} h-full`}>
-      <body className="flex min-h-dvh flex-col bg-zinc-50 font-[family-name:var(--font-vazir)] text-zinc-900 antialiased">
-        <div className="mx-auto flex w-full max-w-md flex-1 flex-col bg-white shadow-sm dark:bg-zinc-900">
-          <header className="sticky top-0 z-20 border-b border-zinc-100 bg-white/95 px-4 py-3 backdrop-blur dark:border-zinc-800 dark:bg-zinc-900/95">
-            <div className="flex items-center gap-2">
-              <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-600 text-lg font-bold text-white">
-                ت
-              </span>
-              <div>
-                <p className="text-sm font-bold leading-tight">تمرین در خانه</p>
-                <p className="text-[11px] leading-tight text-zinc-400">
-                  برنامه ۱۳ هفته‌ای — وزن بدن
-                </p>
-              </div>
-            </div>
-          </header>
-          <main className="flex-1 px-4 pb-24 pt-4">{children}</main>
+      <body className="antialiased">
+        <a className="skip-link" href="#main">رفتن به محتوا</a>
+        <div className="app-shell">
+          <header className="brand-header"><Link href="/" className="brand"><span className="brand-mark"><Icon name="workout" size={27}/></span><span><strong>بدن<span className="brand-dot">.</span></strong><small>تمرین در خانه</small></span></Link><span className="brand-edition" dir="ltr">BODYWEIGHT / 13 WEEKS</span></header>
+          <main id="main" className="app-main">{children}</main>
           <BottomNav />
         </div>
         <SWRegister />

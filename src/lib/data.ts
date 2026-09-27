@@ -108,14 +108,14 @@ export function todayKey(): string {
       new Date(),
     );
     for (const d of dayOrder) {
-      if (name.includes(d.fa)) return d.key;
+      if (name.replace(/[\s\u200c]/g, "") === d.fa.replace(/[\s\u200c]/g, "")) return d.key;
     }
   } catch {
     /* noop */
   }
   // fallback: ساعت‌چرخشی ساده
   const days = dayOrder.map((d) => d.key); // sat first
-  return days[(new Date().getDay() + 6) % 7];
+  return days[(new Date().getDay() + 1) % 7];
 }
 
 export function weekdayTitleForToday(): string {

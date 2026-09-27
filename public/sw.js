@@ -1,5 +1,5 @@
 /* Service Worker برای استفاده آفلاین از اپ */
-const CACHE = "badan-app-v2";
+const CACHE = "badan-app-v3";
 
 function scopePaths() {
   const scope = self.registration.scope;

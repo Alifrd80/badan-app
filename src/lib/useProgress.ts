@@ -26,16 +26,16 @@ function loadDone(): DoneSet {
 }
 
 export function useSettings() {
-  const [level, setLevel] = useState<LevelKey>(() => {
-    if (typeof window === "undefined") return "beginner";
-    const v = window.localStorage.getItem(LS_LEVEL);
-    return v === "intermediate" || v === "professional" ? v : "beginner";
-  });
-  const [week, setWeek] = useState<number>(() => {
-    if (typeof window === "undefined") return 1;
-    const v = Number(window.localStorage.getItem(LS_WEEK));
-    return v >= 1 && v <= 13 ? v : 1;
-  });
+  const [level, setLevel] = useState<LevelKey>("beginner");
+  const [week, setWeek] = useState<number>(1);
+  useEffect(() => {
+    try {
+      const savedLevel = window.localStorage.getItem(LS_LEVEL);
+      const savedWeek = Number(window.localStorage.getItem(LS_WEEK));
+      setLevel(savedLevel === "intermediate" || savedLevel === "professional" ? savedLevel : "beginner");
+      setWeek(Number.isInteger(savedWeek) && savedWeek >= 1 && savedWeek <= 13 ? savedWeek : 1);
+    } catch { /* Storage may be unavailable. */ }
+  }, []);
 
   const changeLevel = useCallback((lv: LevelKey) => {
     setLevel(lv);
@@ -59,15 +59,21 @@ export function useSettings() {
 }
 
 export function useProgress(level: LevelKey) {
-  const [done, setDone] = useState<DoneSet>(loadDone);
+  const [done, setDone] = useState<DoneSet>({});
+  const [loaded, setLoaded] = useState(false);
+  useEffect(() => {
+    setDone(loadDone());
+    setLoaded(true);
+  }, []);
 
   useEffect(() => {
+    if (!loaded) return;
     try {
       window.localStorage.setItem(LS_DONE, JSON.stringify(done));
     } catch {
       /* noop */
     }
-  }, [done]);
+  }, [done, loaded]);
 
   const dayKey = useCallback(
     (week: number, day: string) => `${level}:${week}:${day}`,

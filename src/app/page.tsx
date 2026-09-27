@@ -1,197 +1,33 @@
 "use client";
-
 import Link from "next/link";
-import { useMemo } from "react";
-import {
-  getWeek,
-  levels,
-  todayKey,
-  typeTitle,
-  weekdayTitleForToday,
-  absCircuit,
-} from "@/lib/data";
-import { useProgress, useSettings } from "@/lib/useProgress";
-
-export default function Home() {
-  const { level, week, changeLevel, changeWeek } = useSettings();
-  const { isDone, isAbsDone } = useProgress(level);
-  const today = todayKey();
-
-  const weekData = useMemo(() => getWeek(level, week), [level, week]);
-  const todayDay = weekData?.days.find((d) => d.key === today);
-
-  if (!weekData) return null;
-
-  const restDay = !todayDay || todayDay.type === "rest";
-  const doneCount = todayDay ? todayDay.exercises.filter((_, i) => isDone(week, todayDay.key, i)).length : 0;
-  const totalCount = todayDay?.exercises.length ?? 0;
-  const absDone = todayDay?.hasAbs ? isAbsDone(week, todayDay.key) : true;
-  const allDone = !restDay && doneCount === totalCount && absDone;
-
-  return (
-    <div>
-      {/* بنر امروز */}
-      <section
-        className={`mb-4 rounded-2xl p-4 text-white ${
-          restDay ? "bg-zinc-700" : allDone ? "bg-emerald-700" : "bg-emerald-600"
-        }`}
-      >
-        <p className="text-xs opacity-80">امروز · {weekdayTitleForToday()}</p>
-        {restDay ? (
-          <>
-            <h1 className="mt-1 text-xl font-bold">روز استراحت</h1>
-            <p className="mt-1 text-sm leading-6 opacity-90">
-              به بدن‌تان ریکاوری بدهید؛ آب کافی بنوشید و شب حتماً استراحت کنید.
-            </p>
-          </>
-        ) : (
-          <>
-            <h1 className="mt-1 text-xl font-bold">
-              {typeTitle(todayDay!.type)} — هفته {week}
-            </h1>
-            <p className="mt-1 text-sm opacity-90">
-              {doneCount}/{totalCount} حرکت
-              {todayDay!.hasAbs ? (absDone ? " و شکم انجام شد" : " · شکم باقی مانده") : ""}
-            </p>
-            <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-white/30">
-              <div
-                className="h-full rounded-full bg-white transition-all duration-500"
-                style={{
-                  width: `${totalCount ? Math.round((doneCount / totalCount) * 100) : 0}%`,
-                }}
-              />
-            </div>
-            <Link
-              href={`/day/${week}/${today}`}
-              className="mt-4 inline-block rounded-xl bg-white px-5 py-2.5 text-sm font-bold text-emerald-700"
-            >
-              شروع تمرین امروز →
-            </Link>
-          </>
-        )}
-      </section>
-
-      {/* سطح */}
-      <section className="mb-4">
-        <h2 className="mb-2 text-sm font-bold">سطح من</h2>
-        <div className="grid grid-cols-3 gap-2">
-          {levels.map((l) => (
-            <button
-              key={l.key}
-              onClick={() => changeLevel(l.key)}
-              className={`rounded-xl border py-2.5 text-sm font-medium transition-colors ${
-                level === l.key
-                  ? "border-emerald-600 bg-emerald-600 text-white"
-                  : "border-zinc-200 text-zinc-600"
-              }`}
-            >
-              {l.fa}
-            </button>
-          ))}
-        </div>
-      </section>
-
-      {/* هفته */}
-      <section className="mb-5">
-        <h2 className="mb-2 text-sm font-bold">هفته</h2>
-        <div className="grid grid-cols-7 gap-1.5">
-          {Array.from({ length: 13 }).map((_, i) => {
-            const w = i + 1;
-            return (
-              <button
-                key={w}
-                onClick={() => changeWeek(w)}
-                className={`rounded-lg py-2 text-xs font-medium transition-colors ${
-                  week === w ? "bg-zinc-900 text-white" : "bg-zinc-100 text-zinc-500"
-                }`}
-              >
-                {w}
-              </button>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* روزهای هفته */}
-      <section className="mb-6">
-        <h2 className="mb-2 text-sm font-bold">روزهای هفته {week}</h2>
-        <WeekDays level={level} week={week} />
-      </section>
-
-      {/* میان‌برهای سریع */}
-      <section className="mb-4">
-        <h2 className="mb-2 text-sm font-bold">دسترسی سریع</h2>
-        <div className="grid grid-cols-2 gap-2">
-          <QuickLink href="/abs" title="سرکیت شکم" desc={`${absCircuit.workSeconds} ثانیه هر حرکت`} />
-          <QuickLink href="/pull-no-bar" title="پول بدون میله" desc="برنامه جایگزین" />
-          <QuickLink href="/exercises" title="آموزش حرکات" desc="ویدیوی ۶۹ حرکت" />
-          <QuickLink href="/nutrition" title="تغذیه" desc="محاسبه کالری و رژیم" />
-        </div>
-      </section>
-    </div>
-  );
+import { useEffect, useState } from "react";
+import {getWeek,levels,todayKey,typeTitle,weekdayTitleForToday,absCircuit,exercises} from "@/lib/data";
+import {useProgress,useSettings} from "@/lib/useProgress";
+import Icon from "@/components/Icon";
+import basePath from "@/lib/basePath";
+const fa=(n:number)=>n.toLocaleString("fa-IR");
+export default function Home(){
+ const {level,week,changeLevel,changeWeek}=useSettings();
+ const {isDone,isAbsDone}=useProgress(level);
+ const [today,setToday]=useState("");
+ const [todayTitle,setTodayTitle]=useState("");
+ useEffect(()=>{const update=()=>{setToday(todayKey());setTodayTitle(weekdayTitleForToday())};update();const timer=setInterval(update,60000);return()=>clearInterval(timer)},[]);
+ const weekData=getWeek(level,week);
+ if(!weekData)return null;
+ const todayDay=weekData.days.find(d=>d.key===today);
+ const restDay=!todayDay||todayDay.type==="rest";
+ const doneCount=todayDay?.exercises.filter((_,i)=>isDone(week,today,i)).length??0,totalCount=todayDay?.exercises.length??0;
+ const allDone=!restDay&&doneCount===totalCount&&(!todayDay?.hasAbs||isAbsDone(week,today));
+ const trainingDays=weekData.days.filter(d=>d.type!=="rest");
+ const completedDays=trainingDays.filter(d=>d.exercises.length>0&&d.exercises.every((_,i)=>isDone(week,d.key,i))&&(!d.hasAbs||isAbsDone(week,d.key))).length;
+ const percent=trainingDays.length?Math.round(completedDays/trainingDays.length*100):0;
+ return <div className="dashboard">
+ <div className="page-heading"><div><p className="eyebrow">هر روز، یک قدم قوی‌تر</p><h1>وقتِ تمرین توئه<span>!</span></h1></div><span className="date-tag"><Icon name="calendar" size={18}/>{todayTitle} · هفتهٔ {fa(week)}</span></div>
+ <div className="dashboard-grid"><div className="training-column">
+ <section className="today-card"><img className="workout-photo" src={`${basePath}/images/workout.jpg`} alt="ورزشکار در حال تمرین با وزن بدن"/><div className="today-content"><span className="lime-tag">{allDone?"تمرین امروز انجام شد":restDay?"فرصت بازیابی":"تمرین امروز"}</span><h2>{restDay?"امروز، ریکاوری":typeTitle(todayDay!.type)}{!restDay&&todayDay?.hasAbs&&<small>+ سرکیت شکم</small>}</h2><p>{restDay?"به بدن‌تان ریکاوری بدهید؛ آب کافی بنوشید و شب حتماً استراحت کنید.":`${fa(totalCount)} حرکت · سطح ${levels.find(l=>l.key===level)?.fa} · با وزن بدن`}</p><Link className="primary-action" href={restDay?"/program":`/day/${week}/${today}`}>{restDay?"مشاهدهٔ برنامه":allDone?"مرور تمرین امروز":doneCount?"ادامهٔ تمرین":"شروع تمرین"}<Icon name="arrow" size={20}/></Link>{!restDay&&<div className="today-progress"><span>{fa(doneCount)} از {fa(totalCount)} حرکت انجام شده</span><div><i style={{width:`${totalCount?doneCount/totalCount*100:0}%`}}/></div></div>}</div><span className="photo-caption" dir="ltr">HOME / WORKOUT</span></section>
+ <section className="week-section"><div className="section-heading"><h2>برنامهٔ این هفته</h2><Link href="/program">برنامهٔ کامل <Icon name="arrow" size={17}/></Link></div><div className="week-days">{weekData.days.map((d,index)=>{const rest=d.type==="rest",done=d.exercises.filter((_,i)=>isDone(week,d.key,i)).length,complete=!rest&&d.exercises.length>0&&done===d.exercises.length&&(!d.hasAbs||isAbsDone(week,d.key));const contents=<><span className="day-index">{complete?<Icon name="check" size={19}/>:fa(index+1).padStart(2,"۰")}</span><div className="day-description"><strong>{d.fa}{d.key===today&&<em>امروز</em>}</strong><span>{typeTitle(d.type)}{d.hasAbs?" + شکم":""}</span></div><span className="day-count">{rest?"بازیابی بدن":`${fa(done)}/${fa(d.exercises.length)} حرکت`}</span>{!rest&&<span className="day-open"><Icon name="arrow" size={18}/></span>}</>;return rest?<div className="day-row rest" key={d.key}>{contents}</div>:<Link className={`day-row ${d.key===today?"is-today":""} ${complete?"complete":""}`} href={`/day/${week}/${d.key}`} key={d.key}>{contents}</Link>})}</div></section></div>
+ <aside className="settings-column"><section className="settings-card"><div className="section-heading"><h2>برنامهٔ من</h2><Icon name="workout" size={21}/></div><p className="field-label">سطح تمرین</p><div className="level-control">{levels.map((l,i)=><button key={l.key} aria-pressed={level===l.key} onClick={()=>changeLevel(l.key)} className={level===l.key?"selected":""}><span className="level-bars" aria-hidden="true">{[0,1,2].map(n=><i key={n} className={n<=i?"filled":""}/>)}</span>{l.fa}</button>)}</div><div className="week-label"><p className="field-label">هفتهٔ تمرین</p><span>{fa(week)} از ۱۳</span></div><div className="week-picker">{Array.from({length:13},(_,i)=><button key={i} onClick={()=>changeWeek(i+1)} aria-label={`هفته ${fa(i+1)}`} aria-pressed={week===i+1} className={week===i+1?"selected":""}>{fa(i+1)}</button>)}</div></section>
+ <section className="progress-card"><div className="section-heading"><h2>قدم‌های این هفته</h2><Icon name="bolt" size={21}/></div><div className="progress-detail"><div className="progress-ring" style={{background:`conic-gradient(var(--accent) ${percent}%,#33372d 0)`}}><div><strong>{fa(percent)}<small>٪</small></strong></div></div><div><strong>{fa(completedDays)} <span>از {fa(trainingDays.length)} جلسه</span></strong><p>تمرین کامل‌شده</p></div></div><div className="progress-note">{completedDays?"هر جلسه، یک قدم رو به جلو.":"اولین قدم را همین امروز بردار."}</div></section>
+ <section className="quick-section"><div className="section-heading"><h2>کنارِ تمرین</h2></div><div className="quick-links">{[{href:"/exercises",title:"آموزش حرکات",desc:`ویدیوی ${fa(exercises.length)} حرکت`,icon:"play"},{href:"/abs",title:"سرکیت شکم",desc:`${fa(absCircuit.workSeconds)} ثانیه هر حرکت`,icon:"workout"},{href:"/pull-no-bar",title:"پول بدون میله",desc:"برنامهٔ جایگزین",icon:"bolt"},{href:"/nutrition",title:"تغذیه",desc:"محاسبهٔ کالری و رژیم",icon:"leaf"}].map(it=><Link key={it.href} href={it.href}><span className="quick-icon"><Icon name={it.icon}/></span><div><strong>{it.title}</strong><span>{it.desc}</span></div><Icon name="arrow" size={17}/></Link>)}</div></section></aside></div></div>
 }
 
-function WeekDays({ level, week }: { level: "beginner" | "intermediate" | "professional"; week: number }) {
-  const { isDone, isAbsDone } = useProgress(level);
-  const weekData = getWeek(level, week);
-  if (!weekData) return null;
-  return (
-    <div className="space-y-2">
-      {weekData.days.map((d) => {
-        if (d.type === "rest") {
-          return (
-            <div
-              key={d.key}
-              className="flex items-center justify-between rounded-xl border border-dashed border-zinc-200 px-4 py-3 text-sm text-zinc-400"
-            >
-              <span>{d.fa}</span>
-              <span className="text-xs">استراحت</span>
-            </div>
-          );
-        }
-        const done = d.exercises.filter((_, i) => isDone(week, d.key, i)).length;
-        const absOn = d.hasAbs && isAbsDone(week, d.key);
-        return (
-          <Link
-            key={d.key}
-            href={`/day/${week}/${d.key}`}
-            className="flex items-center justify-between rounded-xl border border-zinc-200 px-4 py-3 transition-colors hover:border-emerald-300"
-          >
-            <div className="flex items-center gap-3">
-              <span
-                className={`flex h-9 w-9 items-center justify-center rounded-xl text-sm font-bold ${
-                  done === d.exercises.length && absOn && d.exercises.length
-                    ? "bg-emerald-100 text-emerald-700"
-                    : "bg-zinc-100 text-zinc-500"
-                }`}
-              >
-                {done}/{d.exercises.length}
-              </span>
-              <div>
-                <p className="text-sm font-medium">{d.fa}</p>
-                <p className="text-[11px] text-zinc-400">
-                  {typeTitle(d.type)}
-                  {d.hasAbs ? " + شکم" : ""}
-                </p>
-              </div>
-            </div>
-            <span className="text-zinc-300">←</span>
-          </Link>
-        );
-      })}
-    </div>
-  );
-}
-
-function QuickLink({ href, title, desc }: { href: string; title: string; desc: string }) {
-  return (
-    <Link
-      href={href}
-      className="rounded-xl border border-zinc-200 p-3 transition-colors hover:border-emerald-300"
-    >
-      <p className="text-sm font-medium">{title}</p>
-      <p className="mt-0.5 text-[11px] text-zinc-400">{desc}</p>
-    </Link>
-  );
-}
