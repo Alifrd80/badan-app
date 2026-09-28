@@ -57,7 +57,7 @@ export default function AbsPage() {
         </div>
       </div>
 
-      <AbsPanel
+      <AbsPanel key={`${level}:${week}`}
         week={week}
         isDone={done}
         onDone={() => markDayAbs(week, "abs", !done)}

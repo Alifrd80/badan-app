@@ -25,5 +25,5 @@ export default function DayInner({
     );
   }
 
-  return <WorkoutPlayer level={level} week={week} day={day.key} />;
+  return <WorkoutPlayer key={`${level}:${week}:${day.key}`} level={level} week={week} day={day.key} />;
 }
