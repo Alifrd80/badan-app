@@ -1,136 +1,29 @@
 "use client";
-
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useSyncExternalStore } from "react";
 import type { LevelKey } from "@/lib/types";
-
-const LS_LEVEL = "badan:level";
-const LS_WEEK = "badan:week";
-const LS_DONE = "badan:done";
-
-interface DoneDay {
-  [itemIndex: number]: boolean;
-  abs?: boolean;
-}
-
-interface DoneSet {
-  [key: string]: DoneDay;
-}
-
-function loadDone(): DoneSet {
-  if (typeof window === "undefined") return {};
-  try {
-    return JSON.parse(window.localStorage.getItem(LS_DONE) ?? "{}");
-  } catch {
-    return {};
-  }
-}
-
+import { storage } from "./storage";
+import { validProfile } from "./assessment";
+function subscribe(fn: () => void) { window.addEventListener('badan-storage',fn); window.addEventListener('storage',fn); return () => {window.removeEventListener('badan-storage',fn);window.removeEventListener('storage',fn);}; }
+function useRaw(key: string, fallback: string) { return useSyncExternalStore(subscribe,()=>{try{return storage.getItem(key)??fallback;}catch{return fallback;}},()=>fallback); }
+function parse(raw: string) { try{return JSON.parse(raw);}catch{return null;} }
 export function useSettings() {
-  const [level, setLevel] = useState<LevelKey>("beginner");
-  const [week, setWeek] = useState<number>(1);
-  useEffect(() => {
-    try {
-      const savedLevel = window.localStorage.getItem(LS_LEVEL);
-      const savedWeek = Number(window.localStorage.getItem(LS_WEEK));
-      setLevel(savedLevel === "intermediate" || savedLevel === "professional" ? savedLevel : "beginner");
-      setWeek(Number.isInteger(savedWeek) && savedWeek >= 1 && savedWeek <= 13 ? savedWeek : 1);
-    } catch { /* Storage may be unavailable. */ }
-  }, []);
-
-  const changeLevel = useCallback((lv: LevelKey) => {
-    setLevel(lv);
-    try {
-      window.localStorage.setItem(LS_LEVEL, lv);
-    } catch {
-      /* noop */
-    }
-  }, []);
-
-  const changeWeek = useCallback((w: number) => {
-    setWeek(w);
-    try {
-      window.localStorage.setItem(LS_WEEK, String(w));
-    } catch {
-      /* noop */
-    }
-  }, []);
-
-  return { level, week, changeLevel, changeWeek };
+ const p=parse(useRaw('badan:profile','null'));
+ const raw=useRaw('badan:level','beginner');
+ const level:LevelKey=validProfile(p)?p.level:raw==='professional'||raw==='intermediate'?raw:'beginner';
+ const saved=Number(useRaw('badan:week','1'));
+ const week=Number.isInteger(saved)&&saved>=1&&saved<=13?saved:1;
+ const changeWeek=useCallback((w:number)=>{if(Number.isInteger(w)&&w>=1&&w<=13)storage.setItem('badan:week',String(w));},[]);
+ return {level,week,changeWeek};
 }
-
-export function useProgress(level: LevelKey) {
-  const [done, setDone] = useState<DoneSet>({});
-  const [loaded, setLoaded] = useState(false);
-  useEffect(() => {
-    setDone(loadDone());
-    setLoaded(true);
-  }, []);
-
-  useEffect(() => {
-    if (!loaded) return;
-    try {
-      window.localStorage.setItem(LS_DONE, JSON.stringify(done));
-    } catch {
-      /* noop */
-    }
-  }, [done, loaded]);
-
-  const dayKey = useCallback(
-    (week: number, day: string) => `${level}:${week}:${day}`,
-    [level],
-  );
-
-  const toggleItem = useCallback(
-    (week: number, day: string, itemIndex: number, value?: boolean) => {
-      setDone((prev) => {
-        const k = dayKey(week, day);
-        const cur = prev[k] ?? {};
-        const now = value ?? !cur[itemIndex];
-        const next = { ...cur, [itemIndex]: now };
-        return { ...prev, [k]: next };
-      });
-    },
-    [dayKey],
-  );
-
-  const markDayAbs = useCallback(
-    (week: number, day: string, doneAbs: boolean) => {
-      setDone((prev) => {
-        const k = dayKey(week, day);
-        const cur = prev[k] ?? {};
-        return { ...prev, [k]: { ...cur, abs: doneAbs } };
-      });
-    },
-    [dayKey],
-  );
-
-  const resetDay = useCallback(
-    (week: number, day: string) => {
-      setDone((prev) => {
-        const next = { ...prev };
-        delete next[dayKey(week, day)];
-        return next;
-      });
-    },
-    [dayKey],
-  );
-
-  const isDone = useCallback(
-    (week: number, day: string, itemIndex: number) =>
-      !!(done[dayKey(week, day)]?.[itemIndex] ?? false),
-    [done, dayKey],
-  );
-
-  const isAbsDone = useCallback(
-    (week: number, day: string) =>
-      !!(done[dayKey(week, day)]?.abs ?? false),
-    [done, dayKey],
-  );
-
-  return { done, toggleItem, markDayAbs, resetDay, isDone, isAbsDone };
+interface DoneDay { [index:number]:boolean; abs?:boolean }
+type DoneSet=Record<string,DoneDay>;
+function loadDone():DoneSet {try{const x=parse(storage.getItem('badan:done')??'{}');return x&&typeof x==='object'&&!Array.isArray(x)?x:{};}catch{return {};}}
+export function useProgress(level:LevelKey) {
+ const raw=useRaw('badan:done','{}'); const parsed=parse(raw);const done:DoneSet=parsed&&typeof parsed==='object'&&!Array.isArray(parsed)?parsed:{};
+ const dayKey=useCallback((week:number,day:string)=>`${level}:${week}:${day}`,[level]);
+ const toggleItem=useCallback((week:number,day:string,index:number,value?:boolean)=>{const all=loadDone(),key=dayKey(week,day);all[key]={...all[key],[index]:value??!all[key]?.[index]};storage.setItem('badan:done',JSON.stringify(all));},[dayKey]);
+ const markDayAbs=useCallback((week:number,day:string,value:boolean)=>{const all=loadDone(),key=dayKey(week,day);all[key]={...all[key],abs:value};storage.setItem('badan:done',JSON.stringify(all));},[dayKey]);
+ const resetDay=useCallback((week:number,day:string)=>{const all=loadDone();delete all[dayKey(week,day)];storage.setItem('badan:done',JSON.stringify(all));},[dayKey]);
+ return {done,toggleItem,markDayAbs,resetDay,isDone:(week:number,day:string,index:number)=>done[dayKey(week,day)]?.[index]===true,isAbsDone:(week:number,day:string)=>done[dayKey(week,day)]?.abs===true};
 }
-
-/** ترکیب ست‌های «اصلی» و «جایگزین» هر حرکت برای نمودار پیشرفت */
-export function totalItemSets(e: { sets: number; alt?: { sets: number } }) {
-  return e.sets + (e.alt ? e.alt.sets : 0);
-}
+export function totalItemSets(e:{sets:number;alt?:{sets:number}}){return e.sets;}

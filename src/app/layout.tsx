@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { Vazirmatn } from "next/font/google";
 import "./globals.css";
+import AppSetup from "@/components/AppSetup";
 import BottomNav from "@/components/BottomNav";
 import SWRegister from "@/components/SWRegister";
 import basePath from "@/lib/basePath";
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: "#c8f36a",
-  colorScheme: "light",
+  colorScheme: "light dark",
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
@@ -38,13 +39,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="fa" dir="rtl" className={`${vazir.variable} h-full`}>
       <body className="antialiased">
-        <a className="skip-link" href="#main">رفتن به محتوا</a>
+        <AppSetup><a className="skip-link" href="#main">رفتن به محتوا</a>
         <div className="app-shell">
           <header className="brand-header"><Link href="/" className="brand"><span className="brand-mark"><Icon name="workout" size={27}/></span><span><strong>بدن<span className="brand-dot">.</span></strong><small>تمرین در خانه</small></span></Link><span className="brand-edition" dir="ltr">BODYWEIGHT / 13 WEEKS</span></header>
           <main id="main" className="app-main">{children}</main>
           <BottomNav />
         </div>
-        <SWRegister />
+        <SWRegister /></AppSetup>
       </body>
     </html>
   );

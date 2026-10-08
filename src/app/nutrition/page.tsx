@@ -1,14 +1,15 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useSavedState } from "@/lib/storage";
+import { useMemo } from "react";
 import { nutrition } from "@/lib/data";
 
 export default function NutritionPage() {
-  const [gender, setGender] = useState<"male" | "female">("male");
-  const [weight, setWeight] = useState(80);
-  const [height, setHeight] = useState(180);
-  const [age, setAge] = useState(30);
-  const [active, setActive] = useState(0);
+  const [gender, setGender] = useSavedState<"male" | "female">("badan:nutrition:gender", "male");
+  const [weight, setWeight] = useSavedState("badan:nutrition:weight", 80);
+  const [height, setHeight] = useSavedState("badan:nutrition:height", 180);
+  const [age, setAge] = useSavedState("badan:nutrition:age", 30);
+  const [active, setActive] = useSavedState("badan:nutrition:active", 0);
 
   const bmr = useMemo(() => {
     const base = 10 * weight + 6.25 * height - 5 * age;

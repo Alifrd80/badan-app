@@ -1,5 +1,6 @@
 "use client";
 
+import AppPreferences from "@/components/AppPreferences";
 import Link from "next/link";
 import { absCircuit, exercises, notes } from "@/lib/data";
 
@@ -13,7 +14,7 @@ const items = [
 export default function MorePage() {
   return (
     <div>
-      <h1 className="mb-4 text-lg font-bold">بیشتر</h1>
+      <h1 className="mb-4 text-lg font-bold">بیشتر</h1><AppPreferences/>
 
       <section className="mb-5 rounded-2xl bg-zinc-900 p-4 text-white">
         <h2 className="text-sm font-bold">درباره برنامه</h2>
@@ -64,7 +65,7 @@ export default function MorePage() {
       </div>
 
       <p className="mt-6 text-center text-[11px] text-zinc-400">
-        نسخه ۱٫۰ · برنامه تمرین در خانه
+        نسخه ۲٫۰ · برنامه تمرین در خانه
       </p>
     </div>
   );

@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { useSettings } from "@/lib/useProgress";
 import VideoEmbed from "@/components/VideoEmbed";
 import { exerciseLabel, pullWithoutBar } from "@/lib/data";
 
 export default function PullNoBarPage() {
-  const [week, setWeek] = useState(1);
+  const { week, changeWeek: setWeek } = useSettings();
   const [open, setOpen] = useState(false);
   const w = pullWithoutBar.find((x) => x.index === week);
 

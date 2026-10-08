@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { getPreparedVideo } from "@/lib/data";
 import { completedGroups, initialSession, restoreSession, sessionReducer, type SessionAction, type SessionState, type SessionStep } from "@/lib/workoutSession";
+import { storage } from "@/lib/storage";
+import ExerciseVideo from "./ExerciseVideo";
 import Icon from "./Icon";
 
 const fa = (n: number) => n.toLocaleString("fa-IR");
@@ -13,9 +15,11 @@ export default function GuidedWorkout({ steps, storageKey, title, onGroupDone, o
 }) {
   const signature = JSON.stringify(steps);
   const [state, setState] = useState<SessionState>(() => {
-    if (resume) { try { const saved = restoreSession(localStorage.getItem(storageKey), signature, steps); if (saved) return saved; } catch {} }
+    if (resume) { try { const saved = restoreSession(storage.getItem(storageKey), signature, steps); if (saved) return saved; } catch {} }
     return { ...initialSession(startAt), completed: steps.slice(0, startAt).map(s => s.key) };
   });
+  const latestState = useRef(state);
+  latestState.current = state;
   const [exitOpen, setExitOpen] = useState(false);
   const [saveError, setSaveError] = useState(false);
   const dialog = useRef<HTMLDialogElement>(null);
@@ -32,9 +36,13 @@ export default function GuidedWorkout({ steps, storageKey, title, onGroupDone, o
     return () => { node?.close(); document.body.style.overflow = oldOverflow; };
   }, []);
   useEffect(() => {
-    const hide = () => { if (document.hidden) setState(s => ({ ...s, paused: true })); };
+    const suspend = () => { const paused = {...latestState.current, paused:true}; latestState.current=paused; setState(paused); if(paused.phase!=="finished") { try { storage.setItem(storageKey, JSON.stringify({signature, state:paused})); } catch {} } };
+    const hide = () => { if (document.hidden) suspend(); };
+    window.addEventListener("badan-background", suspend);
     document.addEventListener("visibilitychange", hide);
-    return () => document.removeEventListener("visibilitychange", hide);
+    const back = () => { if(latestState.current.phase === "finished") {onClose();return;} setState(s => ({...s, paused:true})); setExitOpen(true); };
+    window.addEventListener("badan-back", back);
+    return () => {document.removeEventListener("visibilitychange", hide);window.removeEventListener("badan-back", back);window.removeEventListener("badan-background", suspend);};
   }, []);
   useEffect(() => {
     if (state.paused || state.phase === "finished") return;
@@ -48,8 +56,8 @@ export default function GuidedWorkout({ steps, storageKey, title, onGroupDone, o
   }, [state.paused, state.phase, state.cursor, steps]);
   useEffect(() => {
     try {
-      if (state.phase === "finished") localStorage.removeItem(storageKey);
-      else localStorage.setItem(storageKey, JSON.stringify({ signature, state }));
+      if (state.phase === "finished") storage.removeItem(storageKey);
+      else storage.setItem(storageKey, JSON.stringify({ signature, state }));
     } catch { setSaveError(true); }
     completedGroups(state, steps).forEach(group => {
       if (!notified.current.has(group)) { notified.current.add(group); onGroup.current(group); }
@@ -77,7 +85,7 @@ export default function GuidedWorkout({ steps, storageKey, title, onGroupDone, o
       {isFinished ? <section className="session-finish"><span className="finish-icon"><Icon name="check" size={42}/></span><p className="player-kicker">{doneGroups === groups.length ? "جلسه کامل شد" : "جلسه به پایان رسید"}</p><h1>{doneGroups === groups.length ? "یک قدم قوی‌تر." : "تلاشت ثبت شد."}</h1><p>{doneGroups === groups.length ? "وقتِ نفس گرفتن و استراحته." : "حرکت‌های ردشده انجام‌شده حساب نمی‌شوند."}</p><div className="finish-stats"><div><strong>{fa(doneGroups)} / {fa(groups.length)}</strong><span>حرکت کامل</span></div><div><strong dir="ltr">{time(state.elapsed)}</strong><span>زمان جلسه</span></div><div><strong>{fa(state.completed.length)}</strong><span>ست انجام‌شده</span></div></div><button className="session-primary" onClick={onClose}>بازگشت به برنامه <Icon name="arrow"/></button></section> : <>
         <div className="player-stage"><section className="player-media" aria-label="ویدیوی آموزشی حرکت">
           <div className="media-heading"><span>{isRest ? (sameExercise ? "بعدی · ست بعد" : "بعدی · حرکت بعد") : "آموزش حرکت"}</span><span>{step.seconds ? `${fa(step.seconds)} ثانیه` : `${fa(step.set)} / ${fa(step.sets)} ست`}</span></div>
-          {video.videoId ? <iframe key={step.id} src={video.embedUrl} title={`ویدیوی ${step.label}`} allow="autoplay; fullscreen; picture-in-picture" allowFullScreen/> : <div className="no-video"><Icon name="workout" size={54}/><p>ویدیویی برای این حرکت ثبت نشده است.</p><strong>{step.label}</strong></div>}
+          <ExerciseVideo id={step.id} label={step.label} paused={state.paused}/>
           <div className="media-footer"><span>ویدیوی آموزشی</span>{video.fallbackUrl && <a href={video.fallbackUrl} target="_blank" rel="noreferrer">باز کردن ویدیو ↗</a>}</div>
         </section>
         <section className="player-control-panel">
@@ -92,7 +100,7 @@ export default function GuidedWorkout({ steps, storageKey, title, onGroupDone, o
           </div>
           <div className="player-transport"><button disabled={state.cursor === 0} onClick={() => dispatch({ type: "previous" })}>قبلی</button><button className="pause-control" onClick={() => dispatch({ type: "toggle" })}>{state.paused ? "▶ ادامه" : "Ⅱ مکث"}</button><button onClick={() => dispatch({ type: "skip" })}>{isReady || isRest ? "رد کردن انتظار" : "رد کردن ست"}</button></div>
           {isRest && <label className="rest-adjust">زمان باقی‌مانده <select aria-label="زمان باقی‌ماندهٔ استراحت" value={Math.ceil(state.remaining)} onChange={e => dispatch({ type: "addRest", seconds: Number(e.target.value) - state.remaining })}><option value={Math.ceil(state.remaining)}>{fa(Math.ceil(state.remaining))} ثانیه</option>{[15,30,45,60,90,120,180].filter(n => n !== Math.ceil(state.remaining)).map(n => <option value={n} key={n}>{fa(n)} ثانیه</option>)}</select></label>}
-          {state.paused && <p className="player-hint">مکث مربوط به تایمر است؛ پخش ویدیو کنترل جداگانه دارد.</p>}
+          {state.paused && <p className="player-hint">تمرین و ویدیو متوقف‌اند؛ هر وقت آماده بودی ادامه بده.</p>}
           <p className="player-saved">{saveError ? "ذخیره روی این مرورگر ممکن نیست؛ با خروج، موقعیت جلسه حفظ نمی‌شود." : "موقعیت جلسه روی همین دستگاه ذخیره می‌شود."}</p>
         </section></div>
       </>}

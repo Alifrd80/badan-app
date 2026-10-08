@@ -7,6 +7,7 @@ import type { LevelKey } from "@/lib/types";
 import { useProgress } from "@/lib/useProgress";
 import { restoreSession, type SessionStep } from "@/lib/workoutSession";
 import basePath from "@/lib/basePath";
+import { storage } from "@/lib/storage";
 import Icon from "./Icon";
 import VideoEmbed from "./VideoEmbed";
 import GuidedWorkout from "./GuidedWorkout";
@@ -29,14 +30,14 @@ export default function WorkoutPlayer({ level, week, day }: { level: LevelKey; w
   const storageKey = `badan:session:v1:${level}:${week}:${day}`;
   useEffect(() => {
     try {
-      const saved = JSON.parse(localStorage.getItem(`${storageKey}:choices`) ?? "{}");
+      const saved = JSON.parse(storage.getItem(`${storageKey}:choices`) ?? "{}");
       if (saved && typeof saved === "object" && !Array.isArray(saved)) setAlternatives(saved);
     } catch {}
     setLoaded(true);
   }, [storageKey]);
   useEffect(() => {
     if (!loaded) return;
-    try { localStorage.setItem(`${storageKey}:choices`, JSON.stringify(alternatives)); } catch {}
+    try { storage.setItem(`${storageKey}:choices`, JSON.stringify(alternatives)); } catch {}
   }, [alternatives, loaded, storageKey]);
   const steps = useMemo<SessionStep[]>(() => {
     if (!d) return [];
@@ -48,7 +49,7 @@ export default function WorkoutPlayer({ level, week, day }: { level: LevelKey; w
   }, [d, alternatives, week]);
   useEffect(() => {
     if (!loaded || active) return;
-    try { setCanResume(!!restoreSession(localStorage.getItem(storageKey), JSON.stringify(steps), steps)); } catch { setCanResume(false); }
+    try { setCanResume(!!restoreSession(storage.getItem(storageKey), JSON.stringify(steps), steps)); } catch { setCanResume(false); }
   }, [steps, storageKey, active, loaded]);
   if (!d) return null;
   const done = d.exercises.filter((_, i) => isDone(week, day, i)).length;
@@ -93,7 +94,7 @@ export function AbsPanel({ week, isDone, onDone }: { week: number; isDone: boole
   const storageKey = `badan:session:v1:abs:${week}`;
   useEffect(() => {
     if (active) return;
-    try { setCanResume(!!restoreSession(localStorage.getItem(storageKey), JSON.stringify(steps), steps)); } catch {}
+    try { setCanResume(!!restoreSession(storage.getItem(storageKey), JSON.stringify(steps), steps)); } catch {}
   }, [active, steps, storageKey]);
   return <section className="abs-guided-overview"><p className="session-info">{absCircuit.note}</p><div className="session-list-heading"><h2>سرکیت شکم</h2><span>{fa(absCircuit.workSeconds)} ثانیه تمرین · {fa(absRestSeconds(week))} ثانیه استراحت</span></div><div className="session-exercise-list">{absCircuit.exercises.map((e, i) => <article className="session-exercise" key={i}><button className="exercise-row abs-exercise-row" onClick={() => setOpen(open === i ? null : i)} aria-expanded={open === i}><span className="exercise-number">{fa(i + 1)}</span><span className="exercise-name"><strong>{e.fa}</strong><span>{fa(absCircuit.workSeconds)} ثانیه</span></span><Icon name="play"/></button>{open === i && <div className="overview-video"><VideoEmbed id={e.id} fa={e.fa}/></div>}</article>)}</div><div className="session-start-bar"><div><strong>{fa(steps.length)} حرکت</strong><span>{isDone ? "انجام شده ✓" : "با تایمر و استراحت خودکار"}</span></div><button className="session-primary" onClick={() => setActive(true)}>{canResume ? "ادامهٔ سرکیت" : "شروع سرکیت"}<Icon name="arrow"/></button></div>{active && <GuidedWorkout steps={steps} storageKey={storageKey} title="سرکیت شکم" resume={canResume} onGroupDone={() => { if (!isDone) onDone(); }} onClose={() => setActive(false)}/>}</section>;
 }

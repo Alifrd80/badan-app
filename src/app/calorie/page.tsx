@@ -1,10 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useSavedState } from "@/lib/storage";
+import { useMemo } from "react";
 import { calorie } from "@/lib/data";
 
 export default function CaloriePage() {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useSavedState("badan:calorie:query", "");
 
   const filtered = useMemo(() => {
     if (!query.trim()) return calorie.foodTable;

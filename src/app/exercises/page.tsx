@@ -1,13 +1,14 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useSavedState } from "@/lib/storage";
+import { useMemo } from "react";
 import VideoEmbed from "@/components/VideoEmbed";
 import { categories, exercises } from "@/lib/data";
 
 export default function ExercisesPage() {
-  const [query, setQuery] = useState("");
-  const [filter, setFilter] = useState<string>("all");
-  const [openId, setOpenId] = useState<string | null>(null);
+  const [query, setQuery] = useSavedState("badan:exercises:query", "");
+  const [filter, setFilter] = useSavedState<string>("badan:exercises:filter", "all");
+  const [openId, setOpenId] = useSavedState<string | null>("badan:exercises:openId", null);
 
   const cats = useMemo(() => Object.entries(categories), []);
   const list = useMemo(() => {

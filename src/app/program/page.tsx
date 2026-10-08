@@ -6,7 +6,7 @@ import { getWeek, levels, typeTitle } from "@/lib/data";
 import { useSettings } from "@/lib/useProgress";
 
 export default function ProgramPage() {
-  const { level, week, changeLevel, changeWeek } = useSettings();
+  const { level, week, changeWeek } = useSettings();
   const weekData = useMemo(() => getWeek(level, week), [level, week]);
 
   if (!weekData) return null;
@@ -16,27 +16,10 @@ export default function ProgramPage() {
       <h1 className="mb-1 text-lg font-bold">برنامه</h1>
       <p className="mb-4 text-xs leading-6 text-zinc-400">
         هر دو هفته سختی تمرینات بیشتر می‌شود؛ از هفته هفتم ساختار روزها به شکل
-        پوش/پول/پا تغیییر می‌کند.
+        پوش/پول/پا تغییر می‌کند.
       </p>
 
-      <section className="mb-4">
-        <h2 className="mb-2 text-sm font-bold">سطح</h2>
-        <div className="grid grid-cols-3 gap-2">
-          {levels.map((l) => (
-            <button
-              key={l.key}
-              onClick={() => changeLevel(l.key)}
-              className={`rounded-xl border py-2.5 text-sm font-medium ${
-                level === l.key
-                  ? "border-emerald-600 bg-emerald-600 text-white"
-                  : "border-zinc-200 text-zinc-600"
-              }`}
-            >
-              {l.fa}
-            </button>
-          ))}
-        </div>
-      </section>
+      <div className="assigned-level"><strong>سطح {levels.find(l=>l.key===level)?.fa}</strong><span>براساس ارزیابی اولیهٔ تو</span></div>
 
       <section className="mb-5">
         <h2 className="mb-2 text-sm font-bold">هفته</h2>
