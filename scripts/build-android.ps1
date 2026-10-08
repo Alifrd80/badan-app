@@ -1,4 +1,4 @@
-param([string]$ToolsRoot = (Join-Path $PSScriptRoot '../../android-tools'), [string]$JavaRoot='C:/Program Files/Java/jdk-24', [string]$OutputApk=(Join-Path $PSScriptRoot '../../../outputs/badan-2.0.apk'))
+param([string]$ToolsRoot = (Join-Path $PSScriptRoot '../../android-tools'), [string]$JavaRoot='C:/Program Files/Java/jdk-24', [string]$OutputApk=(Join-Path $PSScriptRoot '../../../outputs/badan-2.0.1.apk'))
 $ErrorActionPreference='Stop'
 $repo=(Resolve-Path (Join-Path $PSScriptRoot '..')).Path
 $ToolsRoot=(Resolve-Path $ToolsRoot).Path
@@ -16,9 +16,12 @@ RunChecked "$JavaRoot/bin/javac.exe" @('-encoding','UTF-8','--release','8','-cla
 $classFiles=@(Get-ChildItem "$build/classes" -Filter '*.class' -Recurse | ForEach-Object FullName)
 RunChecked "$JavaRoot/bin/java.exe" (@('-cp',"$bt/lib/d8.jar",'com.android.tools.r8.D8','--lib',$jar,'--min-api','26','--output',"$build/dex")+$classFiles)
 RunChecked "$JavaRoot/bin/jar.exe" @('uf',"$build/unsigned.apk",'-C',"$build/dex",'classes.dex')
+RunChecked "python" @("$repo/scripts/normalize-apk-paths.py","$build/unsigned.apk")
 RunChecked "$bt/zipalign.exe" @('-f','4',"$build/unsigned.apk","$build/aligned.apk")
 $signing=Join-Path $ToolsRoot 'badan-signing.jks'
 if(!(Test-Path $signing)){RunChecked "$JavaRoot/bin/keytool.exe" @('-genkeypair','-keystore',$signing,'-storepass','android','-keypass','android','-alias','badan','-keyalg','RSA','-keysize','2048','-validity','10000','-dname','CN=Badan Local APK, O=Personal, C=IR')}
 RunChecked "$JavaRoot/bin/java.exe" @('-jar',"$bt/lib/apksigner.jar",'sign','--ks',$signing,'--ks-key-alias','badan','--ks-pass','pass:android','--key-pass','pass:android','--out',$OutputApk,"$build/aligned.apk")
 RunChecked "$JavaRoot/bin/java.exe" @('-jar',"$bt/lib/apksigner.jar",'verify','--verbose',$OutputApk)
+RunChecked "$JavaRoot/bin/javac.exe" @('-encoding','UTF-8','-d',"$build/classes","$repo/scripts/TestOfflineFiles.java")
+RunChecked "$JavaRoot/bin/java.exe" @('-cp',"$build/classes",'TestOfflineFiles',$OutputApk)
 Get-FileHash $OutputApk -Algorithm SHA256

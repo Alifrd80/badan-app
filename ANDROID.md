@@ -1,4 +1,6 @@
-# Badan Android 2.0
+# Badan Android 2.0.1
+
+Version 2.0.1 fixes Windows APK packaging: aapt2 emitted backslashes in asset entry names, which Android could not resolve. The build now normalizes ZIP paths before alignment/signing and runs a Java ZIP-reader regression check on the signed APK. The old 2.0 APK fails the launch-page check; 2.0.1 passes all 722 bundled asset checks. Python's ZIP filename normalization on Windows had concealed this in the previous audit. The signing key and package ID are unchanged, so install this as an update without uninstalling. Native phone execution remains unverified.
 
 Standalone signed APK for Android 8+ (API 26), target API 35. No Android Studio required.
 
